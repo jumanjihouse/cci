@@ -1,0 +1,21 @@
+command:
+  bats --version:
+    exit-status: 0
+    stdout:
+    - {{ .Env.BATS_VERSION }}
+
+  docker-compose --version:
+    exit-status: 0
+    stdout:
+    - {{ .Env.COMPOSE_VERSION }}
+
+  goss --version:
+    exit-status: 0
+    stdout:
+    - {{ .Env.GOSS_VERSION }}
+
+package:
+  docker:
+    installed: true
+    versions:
+      - {{ .Env.DOCKER_VERSION }}

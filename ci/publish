@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+BUILD_DATE=$(date +%Y%m%dT%H%M)
+VCS_REF=${CIRCLE_SHA1:0:7}
+TAG=${BUILD_DATE}-git-${VCS_REF}
+
+docker login -u ${user} -p ${pass}
+docker tag jumanjiman/cci jumanjiman/cci:${TAG}
+docker push jumanjiman/cci:${TAG}
+docker push jumanjiman/cci:latest
+docker logout

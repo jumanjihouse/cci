@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+docker build \
+  --rm \
+  -t jumanjiman/cci \
+  src/
+
+echo
+echo
+docker images | egrep 'jumanjiman/cci\b'
