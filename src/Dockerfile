@@ -12,6 +12,7 @@ RUN apk add --no-cache \
       docker=${DOCKER_VERSION} \
       git \
       gzip \
+      make \
       openssh-client \
       py2-pip \
       tar \
