@@ -1,9 +1,4 @@
 #!/bin/sh
 set -e
 
-docker run \
-  --rm \
-  -it \
-  --entrypoint goss \
-  jumanjiman/cci \
-  -g /goss.yaml validate --format=tap
+docker-compose run ci

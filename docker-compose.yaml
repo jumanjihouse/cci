@@ -1,0 +1,20 @@
+version: '2.1'
+
+services:
+  cci: &defaults
+    image: jumanjiman/cci
+    build:
+      context: src/
+    read_only: true
+    cap_drop:
+      - all
+    cpu_shares: 1023
+    mem_limit: 1G
+    shm_size: 32M
+    stdin_open: true
+    tty: true
+
+  ci:
+    <<: *defaults
+    entrypoint: goss
+    command: -g /goss.yaml validate --format=tap
