@@ -10,6 +10,7 @@ RUN apk add --no-cache \
       ca-certificates \
       curl \
       docker=${DOCKER_VERSION} \
+      file \
       git \
       gzip \
       make \
