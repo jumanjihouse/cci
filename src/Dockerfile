@@ -18,7 +18,7 @@ RUN apk add --no-cache \
       py2-pip \
       tar \
       && \
-    pip install docker-compose==${COMPOSE_VERSION} && \
+    pip install -Iv --compile --no-cache-dir docker-compose==${COMPOSE_VERSION} && \
     cd /tmp && \
     curl -sSL -o bats_v${BATS_VERSION}.tar.gz https://github.com/sstephenson/bats/archive/v${BATS_VERSION}.tar.gz && \
     tar -xf /tmp/bats_v${BATS_VERSION}.tar.gz && \
