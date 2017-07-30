@@ -29,3 +29,4 @@ RUN apk add --no-cache \
     :
 
 COPY goss.yaml /
+COPY microbadger /usr/local/bin/

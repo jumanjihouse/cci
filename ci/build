@@ -1,6 +1,11 @@
 #!/bin/sh
 set -e
 
+docker rm mb &> /dev/null || :
+docker-compose -f docker-compose-mb.yaml build
+docker create --name mb mb true
+docker cp mb:/tmp/microbadger src/
+
 docker-compose build
 echo
 echo

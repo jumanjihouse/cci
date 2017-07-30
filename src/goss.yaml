@@ -14,6 +14,11 @@ command:
     stdout:
     - {{ .Env.GOSS_VERSION }}
 
+  microbadger -h:
+    exit-status: 0
+    stderr:
+    - /name of public docker image/
+
 package:
   docker:
     installed: true

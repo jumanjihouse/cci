@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  mb:
+    image: mb
+    build:
+      context: src/
+      dockerfile: Dockerfile.mb
