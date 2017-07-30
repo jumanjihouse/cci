@@ -19,6 +19,11 @@ command:
     stderr:
     - /name of public docker image/
 
+  pypi info awscli:
+    exit-status: 0
+    stdout:
+    - /^Latest release/
+
 package:
   docker:
     installed: true
