@@ -38,7 +38,7 @@ func main() {
 		os.Exit(0)
 	}
 
-	if *namePtr == "" {
+	if err != nil || *namePtr == "" {
 		flag.PrintDefaults()
 		os.Exit(1)
 	}
