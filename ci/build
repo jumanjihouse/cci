@@ -5,12 +5,23 @@ set -u
 . ci/functions.sh
 verbosity=1
 
+echo
+echo Remove mb container if it has been created.
 docker rm mb &> /dev/null || :
+
+echo
+echo Build mb image.
 docker-compose -f docker-compose-mb.yaml build
+
+echo
+echo Copy microbadger utility.
 docker create --name mb mb true
 docker cp mb:/tmp/microbadger src/
 
+echo
+echo Build cci image.
 docker-compose build
+
 echo
-echo
+echo Show images.
 docker images | egrep 'jumanjiman/cci\b'
