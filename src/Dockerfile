@@ -1,6 +1,6 @@
 FROM alpine:3.6
 
-ENV DOCKER_VERSION 17.05.0-r0
+ENV DOCKER_VERSION 17.07.0-r0
 ENV COMPOSE_VERSION 1.14.0
 ENV GOSS_VERSION 0.3.5
 ENV BATS_VERSION 0.4.0
@@ -10,7 +10,6 @@ RUN apk add --no-cache \
       ca-certificates \
       coreutils \
       curl \
-      docker=${DOCKER_VERSION} \
       file \
       git \
       gzip \
@@ -19,11 +18,21 @@ RUN apk add --no-cache \
       py2-pip \
       tar \
       && \
-    pip install -Iv --compile --no-cache-dir \
+      :
+
+RUN apk add --no-cache \
+      -X http://dl-cdn.alpinelinux.org/alpine/edge/community \
+      docker=${DOCKER_VERSION} \
+      && \
+      :
+
+RUN pip install -Iv --compile --no-cache-dir \
       docker-compose==${COMPOSE_VERSION} \
       pypi-cli \
       && \
-    cd /tmp && \
+      :
+
+RUN cd /tmp && \
     curl -sSL -o bats_v${BATS_VERSION}.tar.gz https://github.com/sstephenson/bats/archive/v${BATS_VERSION}.tar.gz && \
     tar -xf /tmp/bats_v${BATS_VERSION}.tar.gz && \
     bats-${BATS_VERSION}/install.sh /usr/local && \
