@@ -32,6 +32,11 @@ command:
     stdout:
     - /^Latest release/
 
+  stat --printf=%s /dev/zero:
+    exit-status: 0
+    stdout:
+    - /^0$/
+
 package:
   docker:
     installed: true

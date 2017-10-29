@@ -1,8 +1,12 @@
 #!/bin/bash
 set -e
+set -u
+
+. ci/functions.sh
+verbosity=1
 
 BUILD_DATE=$(date +%Y%m%dT%H%M)
-VCS_REF=${CIRCLE_SHA1:0:7}
+VCS_REF=$(git describe --abbrev=7 --tags --always)
 TAG=${BUILD_DATE}-git-${VCS_REF}
 
 docker login -u ${user} -p ${pass}

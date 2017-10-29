@@ -8,6 +8,7 @@ ENV BATS_VERSION 0.4.0
 RUN apk add --no-cache \
       bash \
       ca-certificates \
+      coreutils \
       curl \
       docker=${DOCKER_VERSION} \
       file \
