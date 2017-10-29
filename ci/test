@@ -1,4 +1,15 @@
-#!/bin/sh
+#!/bin/bash
 set -e
+set -u
 
+. ci/functions.sh
+
+echo
+echo Run CI tests.
 docker-compose run ci
+
+echo
+echo Check for thinkgs like trailing whitespace.
+# Hint: -v1 shows just the names of offending files.
+#       -v2 shows lines with trailing whitespace.
+ci/check-files -v1
