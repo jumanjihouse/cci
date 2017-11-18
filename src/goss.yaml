@@ -37,6 +37,11 @@ command:
     stdout:
     - /^0$/
 
+  shellcheck --version:
+    exit-status: 0
+    stdout:
+    - /^website. http://www.shellcheck.net$/
+
 package:
   docker:
     installed: true

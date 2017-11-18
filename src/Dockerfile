@@ -17,6 +17,7 @@ RUN apk add --no-cache \
       openssh-client \
       py2-pip \
       tar \
+      xz \
       && \
       :
 
@@ -39,6 +40,16 @@ RUN cd /tmp && \
     rm -fr /tmp/bats* && \
     curl -sSL -o /usr/bin/goss https://github.com/aelsabbahy/goss/releases/download/v${GOSS_VERSION}/goss-linux-amd64 && \
     chmod 0755 /usr/bin/goss && \
+    :
+
+# Install latest statically-linked version of
+# https://github.com/koalaman/shellcheck
+RUN cd /tmp &&                                                                 \
+    tarball=shellcheck-latest.linux.x86_64.tar.xz &&                           \
+    curl -L -ssL -O https://storage.googleapis.com/shellcheck/${tarball} &&    \
+    tar xvJf ${tarball} &&                                                     \
+    cp /tmp/shellcheck-latest/shellcheck /usr/local/bin/ &&                    \
+    rm -fr /tmp/shellcheck* &&                                                 \
     :
 
 COPY goss.yaml /
