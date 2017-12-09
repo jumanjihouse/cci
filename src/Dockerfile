@@ -6,7 +6,7 @@ ENV GOSS_VERSION 0.3.5
 ENV BATS_VERSION 0.4.0
 
 RUN apk add --no-cache \
-      bash \
+      'bash>=4.4.12-r2' \
       ca-certificates \
       coreutils \
       curl \
