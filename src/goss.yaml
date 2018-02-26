@@ -40,7 +40,7 @@ command:
   shellcheck --version:
     exit-status: 0
     stdout:
-    - /^website. http://www.shellcheck.net$/
+    - /^website. https://www.shellcheck.net$/
 
 package:
   docker:
