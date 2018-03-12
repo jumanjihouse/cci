@@ -11,13 +11,21 @@ RUN apk add --no-cache \
       coreutils \
       curl \
       file \
+      gcc \
       git \
       gzip \
       make \
+      musl-dev \
       openssh-client \
       py2-pip \
+      python2-dev \
+      ruby \
+      ruby-bundler \
+      ruby-dev \
+      ruby-irb \
       tar \
       xz \
+      yaml-dev \
       && \
       :
 
