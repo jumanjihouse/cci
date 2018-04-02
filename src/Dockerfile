@@ -4,6 +4,7 @@ ENV DOCKER_VERSION 18.02.0-r0
 ENV COMPOSE_VERSION 1.20.1
 ENV GOSS_VERSION 0.3.5
 ENV BATS_VERSION 0.4.0
+ENV SHFMT_VERSION v2.3.0
 
 RUN apk add --no-cache \
       'bash>=4.4.12-r2' \
@@ -60,6 +61,11 @@ RUN cd /tmp &&                                                                 \
     cp /tmp/shellcheck-latest/shellcheck /usr/local/bin/ &&                    \
     rm -fr /tmp/shellcheck* &&                                                 \
     :
+
+# Install statically-linked version of shfmt from
+# https://github.com/mvdan/sh
+RUN curl -L -ssL -o /usr/local/bin/shfmt "https://github.com/mvdan/sh/releases/download/${SHFMT_VERSION}/shfmt_${SHFMT_VERSION}_linux_amd64" && \
+    chmod 0755 /usr/local/bin/shfmt
 
 COPY goss.yaml /
 COPY microbadger /usr/local/bin/
