@@ -1,0 +1,45 @@
+#!/bin/bash
+set -eEu
+set -o pipefail
+
+. src/bootstrap
+
+main() {
+  mkbin
+  install_shellcheck
+  install_shfmt
+}
+
+mkbin() {
+  mkdir -p ~/bin || :
+  if ! grep -E ':~/bin[:$]' <<<"$(printenv PATH)" &>/dev/null; then
+    export PATH="${PATH}:~/bin"
+  fi
+}
+
+install_shellcheck() {
+  if ! command -v shellcheck; then
+    # Install latest statically-linked version of
+    # https://github.com/koalaman/shellcheck
+    local -r tarball="shellcheck-latest.linux.x86_64.tar.xz"
+
+    cd /tmp
+    curl -L -ssL -O https://storage.googleapis.com/shellcheck/${tarball}
+    tar xvJf ${tarball}
+    cp /tmp/shellcheck-latest/shellcheck ~/bin/
+    rm -fr /tmp/shellcheck*
+  fi
+}
+
+install_shfmt() {
+  if ! command -v shfmt; then
+    # Install statically-linked version of shfmt from
+    # https://github.com/mvdan/sh
+    local -r SHFMT_VERSION="v2.3.0"
+    curl -L -ssL -o ~/bin/shfmt \
+      "https://github.com/mvdan/sh/releases/download/${SHFMT_VERSION}/shfmt_${SHFMT_VERSION}_linux_amd64"
+    chmod 0755 ~/bin/shfmt
+  fi
+}
+
+main

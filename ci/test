@@ -1,15 +1,32 @@
 #!/bin/bash
-set -e
-set -u
+set -eEu
+set -o pipefail
 
-. ci/functions.sh
+. ci/bootstrap
 
-echo
-echo Run CI tests.
-docker-compose run ci
+main() {
+  run_ci
+  run_precommit
+}
 
-echo
-echo Check for thinkgs like trailing whitespace.
-# Hint: -v1 shows just the names of offending files.
-#       -v2 shows lines with trailing whitespace.
-ci/check-files -v1
+run_ci() {
+  echo
+  echo Run CI tests.
+  docker-compose run ci
+}
+
+run_precommit() {
+  echo
+  echo Run various file checks.
+
+  # http://pre-commit.com/#pre-commit-run
+  readonly DEFAULT_PRECOMMIT_OPTS="--all-files --verbose"
+
+  # Allow user to override our defaults by setting an env var.
+  readonly PRECOMMIT_OPTS="${PRECOMMIT_OPTS:-$DEFAULT_PRECOMMIT_OPTS}"
+
+  # shellcheck disable=SC2086
+  /usr/bin/time pre-commit run ${PRECOMMIT_OPTS}
+}
+
+main

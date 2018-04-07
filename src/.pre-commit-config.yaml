@@ -1,0 +1,52 @@
+---
+# This file configures https://pre-commit.com/
+# to use specific hooks and options.
+
+fail_fast: false
+
+repos:
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    sha: 1.5.1
+    hooks:
+      - id: forbid-binary
+      - id: git-check  # Configure in .gitattributes
+      - id: git-dirty  # Configure in .gitignore
+      - id: shellcheck
+      - id: shfmt
+
+  - repo: https://github.com/adrienverge/yamllint.git
+    sha: v1.11.1
+    hooks:
+      - id: yamllint
+        args: ['--format', 'parsable', '--strict']
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    sha: v1.2.3
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-json
+      - id: detect-private-key
+
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    sha: v1.1.5
+    hooks:
+      - id: forbid-crlf
+      - id: forbid-tabs
+        exclude: >
+          (?x)^(
+            Makefile|
+            .*\.go
+          )$
+
+  - repo: https://github.com/chriskuehl/puppet-pre-commit-hooks.git
+    sha: v2.0.1
+    hooks:
+      - id: puppet-validate
+      - id: erb-validate
+      - id: epp-validate
+      - id: puppet-lint
+        args:
+          - --fail-on-warnings
+          - --no-documentation-check

@@ -1,6 +1,6 @@
 FROM alpine:3.7
 
-ENV DOCKER_VERSION 18.02.0-r0
+ENV DOCKER_VERSION 18.03.0-r0
 ENV COMPOSE_VERSION 1.20.1
 ENV GOSS_VERSION 0.3.5
 ENV BATS_VERSION 0.4.0
@@ -69,3 +69,18 @@ RUN curl -L -ssL -o /usr/local/bin/shfmt "https://github.com/mvdan/sh/releases/d
 
 COPY goss.yaml /
 COPY microbadger /usr/local/bin/
+
+# Cache a bunch of pre-commit hook environments
+# to reduce runtimes on circleci
+# for tests that use this image.
+# The pre-commit framework uses env vars as coded at
+# https://github.com/pre-commit/pre-commit/blob/master/pre_commit/store.py
+ENV XDG_CACHE_HOME /root/.local/
+COPY .pre-commit-config.yaml /root/empty-repo/
+COPY bootstrap /usr/local/sbin/
+RUN cd /root/empty-repo &&                                                    \
+    git config --global user.email "you@example.com" &&                       \
+    git config --global user.name "Your Name" &&                              \
+    git init &&                                                               \
+    git commit --allow-empty -m 'initial git repo' &&                         \
+    /usr/local/sbin/bootstrap

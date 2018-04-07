@@ -1,16 +1,14 @@
 #!/bin/bash
-set -e
-set -u
-
-. ci/functions.sh
-verbosity=1
+set -eEu
+set -o pipefail
 
 BUILD_DATE=$(date +%Y%m%dT%H%M)
 VCS_REF=$(git describe --abbrev=7 --tags --always)
 TAG=${BUILD_DATE}-git-${VCS_REF}
 
-docker login -u ${user} -p ${pass}
-docker tag jumanjiman/cci jumanjiman/cci:${TAG}
-docker push jumanjiman/cci:${TAG}
+# shellcheck disable=SC2154
+docker login -u "${user}" -p "${pass}"
+docker tag jumanjiman/cci "jumanjiman/cci:${TAG}"
+docker push "jumanjiman/cci:${TAG}"
 docker push jumanjiman/cci:latest
 docker logout
