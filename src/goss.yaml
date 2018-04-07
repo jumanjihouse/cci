@@ -1,23 +1,24 @@
+---
 command:
   bats --version:
     exit-status: 0
     stdout:
-    - {{ .Env.BATS_VERSION }}
+      - {{.Env.BATS_VERSION}}
 
   docker-compose --version:
     exit-status: 0
     stdout:
-    - {{ .Env.COMPOSE_VERSION }}
+      - {{.Env.COMPOSE_VERSION}}
 
   goss --version:
     exit-status: 0
     stdout:
-    - {{ .Env.GOSS_VERSION }}
+      - {{.Env.GOSS_VERSION}}
 
   microbadger -h:
     exit-status: 0
     stderr:
-    - /name of public docker image/
+      - /name of public docker image/
 
   microbadger blah:
     exit-status: 1
@@ -25,25 +26,25 @@ command:
   microbadger -name:
     exit-status: 1
     stderr:
-    - /flag needs an argument/
+      - /flag needs an argument/
 
   pypi info awscli:
     exit-status: 0
     stdout:
-    - /^Latest release/
+      - /^Latest release/
 
   stat --printf=%s /dev/zero:
     exit-status: 0
     stdout:
-    - /^0$/
+      - /^0$/
 
   shellcheck --version:
     exit-status: 0
     stdout:
-    - /^website. https://www.shellcheck.net$/
+      - /^website. https://www.shellcheck.net$/
 
 package:
   docker:
     installed: true
     versions:
-      - {{ .Env.DOCKER_VERSION }}
+      - {{.Env.DOCKER_VERSION}}

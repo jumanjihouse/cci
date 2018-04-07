@@ -1,13 +1,10 @@
 #!/bin/bash
-set -e
-set -u
-
-. ci/functions.sh
-verbosity=1
+set -eEu
+set -o pipefail
 
 echo
 echo Remove mb container if it has been created.
-docker rm mb &> /dev/null || :
+docker rm mb &>/dev/null || :
 
 echo
 echo Build mb image.
@@ -24,4 +21,4 @@ docker-compose build
 
 echo
 echo Show images.
-docker images | egrep 'jumanjiman/cci\b'
+docker images | grep -E 'jumanjiman/cci\b'

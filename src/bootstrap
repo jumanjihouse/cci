@@ -1,0 +1,53 @@
+#!/bin/bash
+set -eEu
+set -o pipefail
+
+################################################################################
+# Run "ci/bootstrap" to install dependencies for the test harness.
+################################################################################
+
+main() {
+  install_precommit
+}
+
+trap finish EXIT
+
+export TIME='
+%C
+Elapsed wall clock time:    %E
+CPU seconds in kernel mode: %S
+CPU seconds in user mode:   %S
+Max RSS in KiB:             %M
+'
+
+finish() {
+  declare -ri RC=$?
+  if [[ ${RC} -eq 0 ]]; then
+    echo "$0 OK" >&2
+  else
+    echo "[ERROR] $0" >&2
+  fi
+}
+
+install_precommit() {
+  echo '---> pre-commit'
+
+  python_path="$(python -c "import site; print(site.USER_BASE)")"
+  readonly python_path
+
+  if ! grep -q "${python_path}/bin" <(env | grep PATH); then
+    export PATH="${PATH}:${python_path}/bin"
+  fi
+
+  if ! command -v pre-commit &>/dev/null; then
+    # Install for just this user. Does not need root.
+    /usr/bin/time pip install --user -Iv --compile --no-cache-dir pre-commit
+  fi
+
+  # Install hook environments now. Otherwise, they get
+  # installed when first invoked, and the time to install
+  # artificially skews the time reported for the test run.
+  /usr/bin/time pre-commit install-hooks
+}
+
+main
