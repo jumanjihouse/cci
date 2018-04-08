@@ -8,6 +8,8 @@ main() {
   mkbin
   install_shellcheck
   install_shfmt
+  add_upstream_git_remote
+  fetch_upstream
 }
 
 mkbin() {
@@ -23,9 +25,10 @@ install_shellcheck() {
     # https://github.com/koalaman/shellcheck
     local -r tarball="shellcheck-latest.linux.x86_64.tar.xz"
 
-    cd /tmp
+    pushd /tmp
     curl -L -ssL -O https://storage.googleapis.com/shellcheck/${tarball}
     tar xvJf ${tarball}
+    popd
     cp /tmp/shellcheck-latest/shellcheck ~/bin/
     rm -fr /tmp/shellcheck*
   fi
@@ -40,6 +43,16 @@ install_shfmt() {
       "https://github.com/mvdan/sh/releases/download/${SHFMT_VERSION}/shfmt_${SHFMT_VERSION}_linux_amd64"
     chmod 0755 ~/bin/shfmt
   fi
+}
+
+add_upstream_git_remote() {
+  if ! git remote show upstream &>/dev/null; then
+    git remote add upstream https://github.com/jumanjihouse/cci.git
+  fi
+}
+
+fetch_upstream() {
+  git fetch upstream
 }
 
 main

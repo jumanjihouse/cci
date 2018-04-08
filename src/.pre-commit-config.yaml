@@ -50,3 +50,15 @@ repos:
         args:
           - --fail-on-warnings
           - --no-documentation-check
+
+  - repo: https://github.com/jorisroovers/gitlint
+    sha: master
+    hooks:
+      - id: gitlint
+        stages: [commit-msg]
+
+      - id: gitlint
+        entry: gitlint --commits upstream/master..
+        exclude: .*
+        always_run: true
+        stages: [manual]
