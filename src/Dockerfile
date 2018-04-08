@@ -44,9 +44,9 @@ RUN pip install -Iv --compile --no-cache-dir \
       :
 
 RUN cd /tmp && \
-    curl -sSL -o bats_v${BATS_VERSION}.tar.gz https://github.com/sstephenson/bats/archive/v${BATS_VERSION}.tar.gz && \
+    curl -sSL -o bats_v${BATS_VERSION}.tar.gz https://github.com/bats-core/bats-core/archive/v${BATS_VERSION}.tar.gz && \
     tar -xf /tmp/bats_v${BATS_VERSION}.tar.gz && \
-    bats-${BATS_VERSION}/install.sh /usr/local && \
+    bats-core-${BATS_VERSION}/install.sh /usr/local && \
     rm -fr /tmp/bats* && \
     curl -sSL -o /usr/bin/goss https://github.com/aelsabbahy/goss/releases/download/v${GOSS_VERSION}/goss-linux-amd64 && \
     chmod 0755 /usr/bin/goss && \
