@@ -20,7 +20,7 @@ mkbin() {
 }
 
 install_shellcheck() {
-  if ! command -v shellcheck; then
+  if ! command -v shellcheck &>/dev/null; then
     # Install latest statically-linked version of
     # https://github.com/koalaman/shellcheck
     local -r tarball="shellcheck-latest.linux.x86_64.tar.xz"
@@ -35,7 +35,7 @@ install_shellcheck() {
 }
 
 install_shfmt() {
-  if ! command -v shfmt; then
+  if ! command -v shfmt &>/dev/null; then
     # Install statically-linked version of shfmt from
     # https://github.com/mvdan/sh
     local -r SHFMT_VERSION="v2.3.0"
