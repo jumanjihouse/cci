@@ -84,3 +84,5 @@ RUN cd /root/empty-repo &&                                                    \
     git init &&                                                               \
     git commit --allow-empty -m 'initial git repo' &&                         \
     /usr/local/sbin/bootstrap
+
+COPY python-path.sh /etc/profile.d/

@@ -43,6 +43,9 @@ command:
     stdout:
       - /^website. https://www.shellcheck.net$/
 
+  bash -l -c 'command -v pre-commit':
+    exit-status: 0
+
 package:
   docker:
     installed: true
