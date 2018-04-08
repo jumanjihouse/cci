@@ -67,7 +67,6 @@ RUN cd /tmp &&                                                                 \
 RUN curl -L -ssL -o /usr/local/bin/shfmt "https://github.com/mvdan/sh/releases/download/${SHFMT_VERSION}/shfmt_${SHFMT_VERSION}_linux_amd64" && \
     chmod 0755 /usr/local/bin/shfmt
 
-COPY goss.yaml /
 COPY microbadger /usr/local/bin/
 
 # Cache a bunch of pre-commit hook environments
@@ -86,3 +85,6 @@ RUN cd /root/empty-repo &&                                                    \
     /usr/local/sbin/bootstrap
 
 COPY python-path.sh /etc/profile.d/
+
+# Keep this last to avoid busting the cache when adding tests.
+COPY goss.yaml /
