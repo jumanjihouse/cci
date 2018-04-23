@@ -6,7 +6,7 @@ fail_fast: false
 
 repos:
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    sha: 1.5.1
+    rev: 1.6.0
     hooks:
       - id: forbid-binary
       - id: git-check  # Configure in .gitattributes
@@ -15,13 +15,13 @@ repos:
       - id: shfmt
 
   - repo: https://github.com/adrienverge/yamllint.git
-    sha: v1.11.1
+    rev: v1.11.1
     hooks:
       - id: yamllint
         args: ['--format', 'parsable', '--strict']
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    sha: v1.2.3
+    rev: v1.2.3
     hooks:
       - id: check-added-large-files
       - id: check-case-conflict
@@ -32,7 +32,7 @@ repos:
       - id: detect-private-key
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    sha: v1.1.5
+    rev: v1.1.5
     hooks:
       - id: forbid-crlf
       - id: forbid-tabs
@@ -43,7 +43,7 @@ repos:
           )$
 
   - repo: https://github.com/chriskuehl/puppet-pre-commit-hooks.git
-    sha: v2.0.1
+    rev: v2.0.1
     hooks:
       - id: puppet-validate
       - id: erb-validate
@@ -54,7 +54,7 @@ repos:
           - --no-documentation-check
 
   - repo: https://github.com/jorisroovers/gitlint
-    sha: master
+    rev: v0.10.0
     hooks:
       - id: gitlint
         stages: [commit-msg]
