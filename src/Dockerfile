@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM alpine:3.8
 
 ENV DOCKER_VERSION 18.03.1-r0
 ENV COMPOSE_VERSION 1.21.2
@@ -7,7 +7,7 @@ ENV BATS_VERSION 0.4.0
 ENV SHFMT_VERSION v2.3.0
 
 RUN apk add --no-cache \
-      'bash>=4.4.12-r2' \
+      'bash>=4.4.19-r1' \
       ca-certificates \
       coreutils \
       curl \
