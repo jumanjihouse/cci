@@ -23,6 +23,7 @@ RUN apk add --no-cache \
       ruby \
       ruby-bundler \
       ruby-dev \
+      ruby-etc \
       ruby-irb \
       ruby-json \
       tar \
