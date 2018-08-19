@@ -6,12 +6,13 @@ fail_fast: false
 
 repos:
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 1.7.1
+    rev: 1.9.2
     hooks:
       - id: forbid-binary
       - id: git-check  # Configure in .gitattributes
       - id: git-dirty  # Configure in .gitignore
       - id: reek
+      - id: require-ascii
       - id: rubocop
       - id: shellcheck
       - id: shfmt
