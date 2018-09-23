@@ -1,10 +1,10 @@
 FROM alpine:3.8
 
-ENV DOCKER_VERSION 18.03.1-r0
-ENV COMPOSE_VERSION 1.21.2
+ENV DOCKER_VERSION 18.06.1-r0
+ENV COMPOSE_VERSION 1.22.0
 ENV GOSS_VERSION 0.3.6
-ENV BATS_VERSION 1.0.2
-ENV SHFMT_VERSION v2.4.0
+ENV BATS_VERSION 1.1.0
+ENV SHFMT_VERSION v2.5.1
 
 RUN apk add --no-cache \
       'bash>=4.4.19-r1' \
@@ -87,5 +87,28 @@ RUN cd /root/empty-repo &&                                                    \
 
 COPY python-path.sh /etc/profile.d/
 
-# Keep this last to avoid busting the cache when adding tests.
+# Keep this near last to avoid busting the cache when adding tests.
 COPY goss.yaml /
+
+# BUILD_DATE changes on every build, so it goes last to avoid busting the cache.
+ARG BUILD_DATE
+ENV BUILD_DATE ${BUILD_DATE}
+
+ARG TAG
+ENV TAG ${TAG}
+
+ARG VCS_REF
+ENV VCS_REF ${VCS_REF}
+
+ARG CI_BUILD_URL
+ENV CI_BUILD_URL ${CI_BUILD_URL}
+
+LABEL \
+    io.github.jumanjiman.ci-build-url=${CI_BUILD_URL} \
+    io.github.jumanjiman.version=${TAG} \
+    io.github.jumanjiman.build-date=${BUILD_DATE} \
+    io.github.jumanjiman.vcs-ref=${VCS_REF} \
+    io.github.jumanjiman.license="MIT" \
+    io.github.jumanjiman.docker.dockerfile="/src/Dockerfile" \
+    io.github.jumanjiman.vcs-type="Git" \
+    io.github.jumanjiman.vcs-url="https://github.com/jumanjihouse/cci.git"

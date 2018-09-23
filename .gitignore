@@ -1,3 +1,4 @@
 *.swp
 *~
 src/microbadger
+ci/vars

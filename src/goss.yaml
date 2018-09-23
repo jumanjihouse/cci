@@ -15,6 +15,26 @@ command:
     stdout:
       - {{.Env.GOSS_VERSION}}
 
+  printenv BUILD_DATE:
+    exit-status: 0
+    stdout:
+      - {{.Env.BUILD_DATE}}
+
+  printenv TAG:
+    exit-status: 0
+    stdout:
+      - {{.Env.TAG}}
+
+  printenv VCS_REF:
+    exit-status: 0
+    stdout:
+      - {{.Env.VCS_REF}}
+
+  printenv CI_BUILD_URL:
+    exit-status: 0
+    stdout:
+      - {{.Env.CI_BUILD_URL}}
+
   microbadger -h:
     exit-status: 0
     stderr:
