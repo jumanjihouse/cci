@@ -6,6 +6,11 @@ services:
     image: jumanjiman/cci
     build:
       context: src/
+      args:
+        - BUILD_DATE
+        - TAG
+        - VCS_REF
+        - CI_BUILD_URL=${CIRCLE_BUILD_URL}
     read_only: true
     cap_drop:
       - all

@@ -2,9 +2,7 @@
 set -eEu
 set -o pipefail
 
-BUILD_DATE=$(date +%Y%m%dT%H%M)
-VCS_REF=$(git describe --abbrev=7 --tags --always)
-TAG=${BUILD_DATE}-git-${VCS_REF}
+. ci/vars
 
 # shellcheck disable=SC2154
 docker login -u "${user}" -p "${pass}"

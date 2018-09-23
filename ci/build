@@ -2,6 +2,14 @@
 set -eEu
 set -o pipefail
 
+cat >ci/vars <<EOF
+export BUILD_DATE=$(date +%Y%m%dT%H%M)
+export VCS_REF=$(git describe --abbrev=7 --tags --always)
+export TAG=\${BUILD_DATE}-git-\${VCS_REF}
+EOF
+
+. ci/vars
+
 echo
 echo Remove mb container if it has been created.
 docker rm mb &>/dev/null || :
