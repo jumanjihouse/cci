@@ -1,7 +1,7 @@
-FROM alpine:3.8
+FROM alpine:3.9
 
-ENV DOCKER_VERSION 18.06.1-r0
-ENV COMPOSE_VERSION 1.22.0
+ENV DOCKER_VERSION 18.09.5-r0
+ENV COMPOSE_VERSION 1.24.0
 ENV GOSS_VERSION 0.3.6
 ENV BATS_VERSION 1.1.0
 ENV SHFMT_VERSION v2.5.1
@@ -15,9 +15,11 @@ RUN apk add --no-cache \
       gcc \
       git \
       gzip \
+      libffi-dev \
       make \
       musl-dev \
       openssh-client \
+      openssl-dev \
       py2-pip \
       python2-dev \
       ruby \
