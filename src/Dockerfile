@@ -15,6 +15,7 @@ RUN apk add --no-cache \
       gcc \
       git \
       gzip \
+      jq \
       libffi-dev \
       make \
       musl-dev \
