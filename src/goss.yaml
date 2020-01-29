@@ -7,8 +7,6 @@ command:
 
   docker-compose --version:
     exit-status: 0
-    stdout:
-      - {{.Env.COMPOSE_VERSION}}
 
   goss --version:
     exit-status: 0
