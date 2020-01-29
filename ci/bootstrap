@@ -2,14 +2,47 @@
 set -eEu
 set -o pipefail
 
-. src/bootstrap
-
 main() {
+  setup_pyenv
+  setup_python_path
+  install_pips
+  pre-commit install-hooks
   mkbin
   install_shellcheck
   install_shfmt
   add_upstream_git_remote
   fetch_upstream
+}
+
+setup_pyenv() {
+  if command -v pyenv &>/dev/null; then
+    py3="$(pyenv whence python3 | tail -1)"
+    pyenv global "${py3}"
+
+    # Avoid error or CircleCI:
+    # NameError: name 'platform_system' is not defined
+    pip3 install --upgrade pip setuptools
+  fi
+}
+
+setup_python_path() {
+  PYTHON_PATH="$(python3 -c "import site; print(site.USER_BASE)")"
+  readonly PYTHON_PATH
+
+  if ! grep "${PYTHON_PATH}/bin" <(printenv PATH) &>/dev/null; then
+    export PATH="${PATH}:${PYTHON_PATH}/bin"
+  fi
+}
+
+install_pips() {
+  pip3 install \
+    --compile \
+    --disable-pip-version-check \
+    --no-cache-dir \
+    --quiet \
+    --user \
+    --verbose \
+    -r ci/requirements.txt
 }
 
 mkbin() {
@@ -38,7 +71,7 @@ install_shfmt() {
   if ! command -v shfmt &>/dev/null; then
     # Install statically-linked version of shfmt from
     # https://github.com/mvdan/sh
-    local -r SHFMT_VERSION="v2.3.0"
+    local -r SHFMT_VERSION="v3.0.1"
     curl -L -ssL -o ~/bin/shfmt \
       "https://github.com/mvdan/sh/releases/download/${SHFMT_VERSION}/shfmt_${SHFMT_VERSION}_linux_amd64"
     chmod 0755 ~/bin/shfmt

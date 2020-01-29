@@ -1,10 +1,8 @@
-FROM alpine:3.10.1
+FROM alpine:3.11.0
 
-ENV DOCKER_VERSION 19.03.1-r1
-ENV COMPOSE_VERSION 1.24.1
-ENV GOSS_VERSION 0.3.7
+ENV GOSS_VERSION 0.3.9
 ENV BATS_VERSION 1.1.0
-ENV SHFMT_VERSION v2.6.4
+ENV SHFMT_VERSION v3.0.1
 
 RUN apk add --no-cache \
       'bash>=4.4.19-r1' \
@@ -21,8 +19,8 @@ RUN apk add --no-cache \
       musl-dev \
       openssh-client \
       openssl-dev \
-      py2-pip \
-      python2-dev \
+      python3 \
+      python3-dev \
       ruby \
       ruby-bundler \
       ruby-dev \
@@ -37,15 +35,12 @@ RUN apk add --no-cache \
 
 RUN apk add --no-cache \
       -X http://dl-cdn.alpinelinux.org/alpine/edge/community \
-      docker=${DOCKER_VERSION} \
+      docker \
       && \
       :
 
-RUN pip install -Iv --compile --no-cache-dir \
-      docker-compose==${COMPOSE_VERSION} \
-      pypi-cli \
-      && \
-      :
+COPY requirements.txt /cci/
+RUN pip3 install -Iv --compile --no-cache-dir -r /cci/requirements.txt
 
 RUN cd /tmp && \
     curl -sSL -o bats_v${BATS_VERSION}.tar.gz https://github.com/bats-core/bats-core/archive/v${BATS_VERSION}.tar.gz && \
