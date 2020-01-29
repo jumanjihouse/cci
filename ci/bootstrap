@@ -15,14 +15,19 @@ main() {
 }
 
 setup_pyenv() {
-  if command -v pyenv &>/dev/null; then
-    py3="$(pyenv whence python3 | tail -1)"
-    pyenv global "${py3}"
-
-    # Avoid error or CircleCI:
-    # NameError: name 'platform_system' is not defined
-    pip3 install --upgrade pip setuptools
+  if ! command -v pyenv &>/dev/null; then
+    return
   fi
+
+  py3="3.6.3"
+  if ! pyenv versions | grep "${py3}" &>/dev/null; then
+    pyenv install "${py3}"
+  fi
+  pyenv global "${py3}"
+
+  # Avoid error or CircleCI:
+  # NameError: name 'platform_system' is not defined
+  pip3 install --upgrade pip setuptools
 }
 
 setup_python_path() {
