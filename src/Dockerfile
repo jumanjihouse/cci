@@ -1,6 +1,5 @@
 FROM alpine:3.11.0
 
-ENV DOCKER_VERSION 19.03.1-r1
 ENV GOSS_VERSION 0.3.9
 ENV BATS_VERSION 1.1.0
 ENV SHFMT_VERSION v3.0.1
@@ -36,7 +35,7 @@ RUN apk add --no-cache \
 
 RUN apk add --no-cache \
       -X http://dl-cdn.alpinelinux.org/alpine/edge/community \
-      docker=${DOCKER_VERSION} \
+      docker \
       && \
       :
 
