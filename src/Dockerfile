@@ -2,7 +2,7 @@ FROM alpine:3.11.5
 
 ENV GOSS_VERSION 0.3.9
 ENV BATS_VERSION 1.1.0
-ENV SHFMT_VERSION v3.0.1
+ENV SHFMT_VERSION v3.1.0
 
 RUN apk add --no-cache \
       'bash>=4.4.19-r1' \
