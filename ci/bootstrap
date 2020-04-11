@@ -61,10 +61,12 @@ install_shellcheck() {
   if ! command -v shellcheck &>/dev/null; then
     # Install latest statically-linked version of
     # https://github.com/koalaman/shellcheck
-    local -r tarball="shellcheck-latest.linux.x86_64.tar.xz"
+    local -r version="latest"
+    local -r tarball="shellcheck-${version}.linux.x86_64.tar.xz"
+    local -r url="https://github.com/koalaman/shellcheck/releases/download/${version}"
 
     pushd /tmp
-    curl -L -ssL -O https://storage.googleapis.com/shellcheck/${tarball}
+    curl -L -ssL -O "${url}/${tarball}"
     tar xvJf ${tarball}
     popd
     cp /tmp/shellcheck-latest/shellcheck ~/bin/
@@ -76,7 +78,7 @@ install_shfmt() {
   if ! command -v shfmt &>/dev/null; then
     # Install statically-linked version of shfmt from
     # https://github.com/mvdan/sh
-    local -r SHFMT_VERSION="v3.0.1"
+    local -r SHFMT_VERSION="v3.1.0"
     curl -L -ssL -o ~/bin/shfmt \
       "https://github.com/mvdan/sh/releases/download/${SHFMT_VERSION}/shfmt_${SHFMT_VERSION}_linux_amd64"
     chmod 0755 ~/bin/shfmt

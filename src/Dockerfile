@@ -2,7 +2,7 @@ FROM alpine:3.11.5
 
 ENV GOSS_VERSION 0.3.9
 ENV BATS_VERSION 1.1.0
-ENV SHFMT_VERSION v3.0.1
+ENV SHFMT_VERSION v3.1.0
 
 RUN apk add --no-cache \
       'bash>=4.4.19-r1' \
@@ -54,8 +54,10 @@ RUN cd /tmp && \
 # Install latest statically-linked version of
 # https://github.com/koalaman/shellcheck
 RUN cd /tmp &&                                                                 \
+    version="latest" &&                                                        \
     tarball=shellcheck-latest.linux.x86_64.tar.xz &&                           \
-    curl -L -ssL -O https://storage.googleapis.com/shellcheck/${tarball} &&    \
+    url=https://github.com/koalaman/shellcheck/releases/download/${version} && \
+    curl -L -ssL -O "${url}/${tarball}" &&                                     \
     tar xvJf ${tarball} &&                                                     \
     cp /tmp/shellcheck-latest/shellcheck /usr/local/bin/ &&                    \
     rm -fr /tmp/shellcheck* &&                                                 \
