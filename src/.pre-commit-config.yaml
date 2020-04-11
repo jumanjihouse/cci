@@ -26,7 +26,14 @@ repos:
     rev: v1.15.0
     hooks:
       - id: yamllint
-        args: ['--format', 'parsable', '--strict']
+        args: [--format, parsable, --strict]
+
+  - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
+    rev: 0.0.10
+    hooks:
+      - id: yamlfmt
+        args: [--mapping, '2', --sequence, '4', --offset, '2', --width, '150']
+        exclude: src/goss.yaml  # This file uses go template
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.1.0
