@@ -6,7 +6,7 @@ fail_fast: false
 
 repos:
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 1.11.0
+    rev: 2.0.0
     hooks:
       - id: check-mailmap
       - id: fasterer
@@ -23,7 +23,7 @@ repos:
       - id: shfmt
 
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.15.0
+    rev: v1.21.0
     hooks:
       - id: yamllint
         args: [--format, parsable, --strict]
@@ -36,7 +36,7 @@ repos:
         exclude: src/goss.yaml  # This file uses go template
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.1.0
+    rev: v2.5.0
     hooks:
       - id: check-added-large-files
       - id: check-case-conflict
@@ -48,7 +48,7 @@ repos:
       - id: flake8
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.1.6
+    rev: v1.1.7
     hooks:
       - id: forbid-crlf
       - id: forbid-tabs
@@ -59,7 +59,7 @@ repos:
           )$
 
   - repo: https://github.com/chriskuehl/puppet-pre-commit-hooks.git
-    rev: v2.0.2
+    rev: v2.1.0
     hooks:
       - id: puppet-validate
       - id: erb-validate
@@ -70,7 +70,7 @@ repos:
           - --no-documentation-check
 
   - repo: https://github.com/jorisroovers/gitlint
-    rev: v0.11.0
+    rev: v0.13.1
     hooks:
       - id: gitlint
         stages: [commit-msg]
