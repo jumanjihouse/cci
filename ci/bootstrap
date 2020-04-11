@@ -61,10 +61,12 @@ install_shellcheck() {
   if ! command -v shellcheck &>/dev/null; then
     # Install latest statically-linked version of
     # https://github.com/koalaman/shellcheck
-    local -r tarball="shellcheck-latest.linux.x86_64.tar.xz"
+    local -r version="latest"
+    local -r tarball="shellcheck-${version}.linux.x86_64.tar.xz"
+    local -r url="https://github.com/koalaman/shellcheck/releases/download/${version}"
 
     pushd /tmp
-    curl -L -ssL -O https://storage.googleapis.com/shellcheck/${tarball}
+    curl -L -ssL -O "${url}/${tarball}"
     tar xvJf ${tarball}
     popd
     cp /tmp/shellcheck-latest/shellcheck ~/bin/

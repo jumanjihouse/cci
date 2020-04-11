@@ -54,8 +54,10 @@ RUN cd /tmp && \
 # Install latest statically-linked version of
 # https://github.com/koalaman/shellcheck
 RUN cd /tmp &&                                                                 \
+    version="latest" &&                                                        \
     tarball=shellcheck-latest.linux.x86_64.tar.xz &&                           \
-    curl -L -ssL -O https://storage.googleapis.com/shellcheck/${tarball} &&    \
+    url=https://github.com/koalaman/shellcheck/releases/download/${version} && \
+    curl -L -ssL -O "${url}/${tarball}" &&                                     \
     tar xvJf ${tarball} &&                                                     \
     cp /tmp/shellcheck-latest/shellcheck /usr/local/bin/ &&                    \
     rm -fr /tmp/shellcheck* &&                                                 \
