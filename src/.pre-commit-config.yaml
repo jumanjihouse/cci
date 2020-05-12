@@ -6,7 +6,7 @@ fail_fast: false
 
 repos:
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 2.0.0
+    rev: 2.0.2
     hooks:
       - id: check-mailmap
       - id: fasterer
@@ -23,7 +23,7 @@ repos:
       - id: shfmt
 
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.21.0
+    rev: v1.23.0
     hooks:
       - id: yamllint
         args: [--format, parsable, --strict]
