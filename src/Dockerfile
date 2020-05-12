@@ -39,6 +39,8 @@ RUN apk add --no-cache \
       && \
       :
 
+RUN ln -s /usr/bin/python3 /usr/bin/python
+
 COPY requirements.txt /cci/
 RUN pip3 install -Iv --compile --no-cache-dir -r /cci/requirements.txt
 

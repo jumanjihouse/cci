@@ -64,6 +64,11 @@ command:
   bash -l -c 'command -v pre-commit':
     exit-status: 0
 
+  python --version:
+    exit-status: 0
+    stdout:
+      - /^Python 3/
+
 package:
   docker:
     installed: true
