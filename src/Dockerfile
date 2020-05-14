@@ -5,10 +5,13 @@ ENV BATS_VERSION 1.2.0
 ENV SHFMT_VERSION v3.1.1
 
 RUN apk add --no-cache \
+      -X http://dl-cdn.alpinelinux.org/alpine/edge/main \
+      -X http://dl-cdn.alpinelinux.org/alpine/edge/community \
       'bash>=4.4.19-r1' \
       ca-certificates \
       coreutils \
       curl \
+      docker \
       file \
       gcc \
       git \
@@ -19,6 +22,7 @@ RUN apk add --no-cache \
       musl-dev \
       openssh-client \
       openssl-dev \
+      py3-pip \
       python3 \
       python3-dev \
       ruby \
@@ -30,12 +34,6 @@ RUN apk add --no-cache \
       tar \
       xz \
       yaml-dev \
-      && \
-      :
-
-RUN apk add --no-cache \
-      -X http://dl-cdn.alpinelinux.org/alpine/edge/community \
-      docker \
       && \
       :
 
