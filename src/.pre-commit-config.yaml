@@ -36,7 +36,7 @@ repos:
         exclude: src/goss.yaml  # This file uses go template
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.5.0
+    rev: v3.0.1
     hooks:
       - id: check-added-large-files
       - id: check-case-conflict
@@ -45,6 +45,10 @@ repos:
       - id: check-symlinks
       - id: check-vcs-permalinks
       - id: detect-private-key
+
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: 3.8.1
+    hooks:
       - id: flake8
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks
