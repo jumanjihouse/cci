@@ -3,6 +3,7 @@ set -eEu
 set -o pipefail
 
 . ci/bootstrap
+. ci/vars
 
 main() {
   run_ci

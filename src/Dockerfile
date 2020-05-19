@@ -20,6 +20,7 @@ RUN apk add --no-cache \
       libffi-dev \
       make \
       musl-dev \
+      npm \
       openssh-client \
       openssl-dev \
       py3-pip \
@@ -89,26 +90,3 @@ COPY python-path.sh /etc/profile.d/
 
 # Keep this near last to avoid busting the cache when adding tests.
 COPY goss.yaml /
-
-# BUILD_DATE changes on every build, so it goes last to avoid busting the cache.
-ARG BUILD_DATE
-ENV BUILD_DATE ${BUILD_DATE}
-
-ARG TAG
-ENV TAG ${TAG}
-
-ARG VCS_REF
-ENV VCS_REF ${VCS_REF}
-
-ARG CI_BUILD_URL
-ENV CI_BUILD_URL ${CI_BUILD_URL}
-
-LABEL \
-    io.github.jumanjiman.ci-build-url=${CI_BUILD_URL} \
-    io.github.jumanjiman.version=${TAG} \
-    io.github.jumanjiman.build-date=${BUILD_DATE} \
-    io.github.jumanjiman.vcs-ref=${VCS_REF} \
-    io.github.jumanjiman.license="MIT" \
-    io.github.jumanjiman.docker.dockerfile="/src/Dockerfile" \
-    io.github.jumanjiman.vcs-type="Git" \
-    io.github.jumanjiman.vcs-url="https://github.com/jumanjihouse/cci.git"

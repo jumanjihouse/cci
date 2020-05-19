@@ -27,7 +27,7 @@ setup_pyenv() {
 
   # Avoid error or CircleCI:
   # NameError: name 'platform_system' is not defined
-  pip3 install --upgrade pip setuptools
+  pip3 install --upgrade pip setuptools wheel
 }
 
 setup_python_path() {
