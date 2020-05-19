@@ -20,6 +20,7 @@ RUN apk add --no-cache \
       libffi-dev \
       make \
       musl-dev \
+      npm \
       openssh-client \
       openssl-dev \
       py3-pip \
