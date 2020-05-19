@@ -20,14 +20,6 @@ services:
         io.github.jumanjiman.docker.dockerfile: src/Dockerfile
         io.github.jumanjiman.vcs-type: Git
         io.github.jumanjiman.vcs-url: https://github.com/jumanjihouse/cci.git
-    read_only: true
-    cap_drop:
-      - all
-    cpu_shares: 1023
-    mem_limit: 1G
-    shm_size: 32M
-    stdin_open: true
-    tty: true
 
   ci:
     <<: *defaults
@@ -38,3 +30,11 @@ services:
       - TAG
       - VCS_REF
       - CI_BUILD_URL
+    read_only: true
+    cap_drop:
+      - all
+    cpu_shares: 1023
+    mem_limit: 1G
+    shm_size: 32M
+    stdin_open: true
+    tty: true
