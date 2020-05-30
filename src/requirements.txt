@@ -1,6 +1,6 @@
 docker-compose==1.25.5
 pre-commit==2.4.0
 pypi-cli
-setuptools==47.1.0
+setuptools==47.1.1
 setuptools-autover==1.0.2
 wheel==0.34.2
