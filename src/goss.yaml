@@ -72,6 +72,9 @@ command:
   npm --version:
     exit-status: 0
 
+  command -v go:
+    exit-status: 0
+
 package:
   docker:
     installed: true
