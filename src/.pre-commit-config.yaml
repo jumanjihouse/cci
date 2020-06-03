@@ -6,7 +6,7 @@ fail_fast: false
 
 repos:
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 2.0.2
+    rev: 2.1.0
     hooks:
       - id: check-mailmap
       - id: fasterer
@@ -29,14 +29,14 @@ repos:
         args: [--format, parsable, --strict]
 
   - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
-    rev: 0.0.10
+    rev: 0.0.11
     hooks:
       - id: yamlfmt
         args: [--mapping, '2', --sequence, '4', --offset, '2', --width, '150']
         exclude: src/goss.yaml  # This file uses go template
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.0.1
+    rev: v3.1.0
     hooks:
       - id: check-added-large-files
       - id: check-case-conflict
@@ -47,7 +47,7 @@ repos:
       - id: detect-private-key
 
   - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.1
+    rev: 3.8.2
     hooks:
       - id: flake8
 
