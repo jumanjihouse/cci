@@ -3,7 +3,7 @@ command:
   bats --version:
     exit-status: 0
     stdout:
-      - {{.Env.BATS_VERSION}}
+      - '{{.Env.BATS_VERSION}}'
 
   docker-compose --version:
     exit-status: 0
@@ -11,27 +11,27 @@ command:
   goss --version:
     exit-status: 0
     stdout:
-      - {{.Env.GOSS_VERSION}}
+      - '{{.Env.GOSS_VERSION}}'
 
   printenv BUILD_DATE:
     exit-status: 0
     stdout:
-      - {{.Env.BUILD_DATE}}
+      - '{{.Env.BUILD_DATE}}'
 
   printenv TAG:
     exit-status: 0
     stdout:
-      - {{.Env.TAG}}
+      - '{{.Env.TAG}}'
 
   printenv VCS_REF:
     exit-status: 0
     stdout:
-      - {{.Env.VCS_REF}}
+      - '{{.Env.VCS_REF}}'
 
   printenv CI_BUILD_URL:
     exit-status: 0
     stdout:
-      - {{.Env.CI_BUILD_URL}}
+      - '{{.Env.CI_BUILD_URL}}'
 
   microbadger -h:
     exit-status: 0
