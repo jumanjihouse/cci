@@ -15,6 +15,7 @@ RUN apk add --no-cache \
       file \
       gcc \
       git \
+      go \
       gzip \
       jq \
       libffi-dev \
