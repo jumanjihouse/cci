@@ -16,15 +16,6 @@ echo Remove mb container if it has been created.
 docker rm mb &>/dev/null || :
 
 echo
-echo Build mb image.
-docker-compose -f docker-compose-mb.yaml build
-
-echo
-echo Copy microbadger utility.
-docker create --name mb mb true
-docker cp mb:/tmp/microbadger src/
-
-echo
 echo Build cci image.
 docker-compose build
 

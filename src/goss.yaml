@@ -33,19 +33,6 @@ command:
     stdout:
       - '{{.Env.CI_BUILD_URL}}'
 
-  microbadger -h:
-    exit-status: 0
-    stderr:
-      - /name of public docker image/
-
-  microbadger blah:
-    exit-status: 1
-
-  microbadger -name:
-    exit-status: 1
-    stderr:
-      - /flag needs an argument/
-
   pypi info awscli:
     exit-status: 0
     stdout:

@@ -70,8 +70,6 @@ RUN cd /tmp &&                                                                 \
 RUN curl -L -ssL -o /usr/local/bin/shfmt "https://github.com/mvdan/sh/releases/download/${SHFMT_VERSION}/shfmt_${SHFMT_VERSION}_linux_amd64" && \
     chmod 0755 /usr/local/bin/shfmt
 
-COPY microbadger /usr/local/bin/
-
 # Cache a bunch of pre-commit hook environments
 # to reduce runtimes on circleci
 # for tests that use this image.
