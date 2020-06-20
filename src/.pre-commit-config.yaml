@@ -65,7 +65,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.2
+    rev: 3.8.3
     hooks:
       - id: flake8
 
@@ -113,7 +113,7 @@ repos:
       - id: codespell
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v0.770
+    rev: v0.780
     hooks:
       - id: mypy
 
@@ -133,7 +133,7 @@ repos:
       - id: pep257
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.4.4
+    rev: v2.6.1
     hooks:
       - id: pyupgrade
 
@@ -151,7 +151,7 @@ repos:
       - id: add-trailing-comma
 
   - repo: https://github.com/asottile/yesqa
-    rev: v1.1.0
+    rev: v1.2.1
     hooks:
       - id: yesqa
 
@@ -162,7 +162,7 @@ repos:
         args: [--baseline, ci/secrets.baseline]
 
   - repo: https://github.com/thoughtworks/talisman
-    rev: v1.2.0
+    rev: v1.3.0
     hooks:
       - id: talisman-commit
 
@@ -191,6 +191,6 @@ repos:
       - id: autopep8
 
   - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.2
+    rev: 3.8.3
     hooks:
       - id: flake8
