@@ -1,5 +1,5 @@
 docker-compose==1.26.1
-pre-commit==2.5.1
+pre-commit==2.6.0
 pypi-cli
 setuptools==47.3.1
 setuptools-autover==1.0.2
