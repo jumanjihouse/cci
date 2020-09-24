@@ -11,7 +11,7 @@ RUN apk add --no-cache \
       ca-certificates \
       coreutils \
       curl \
-      docker \
+      'docker>=19.03.13-r0' \
       file \
       gcc \
       git \
