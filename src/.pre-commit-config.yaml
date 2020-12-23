@@ -65,7 +65,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.3
+    rev: 3.8.4
     hooks:
       - id: flake8
 
@@ -191,6 +191,6 @@ repos:
       - id: autopep8
 
   - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.3
+    rev: 3.8.4
     hooks:
       - id: flake8
