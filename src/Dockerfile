@@ -8,6 +8,7 @@ RUN apk add --no-cache \
       -X http://dl-cdn.alpinelinux.org/alpine/edge/main \
       -X http://dl-cdn.alpinelinux.org/alpine/edge/community \
       'bash>=4.4.19-r1' \
+      bind-tools \
       ca-certificates \
       coreutils \
       curl \
