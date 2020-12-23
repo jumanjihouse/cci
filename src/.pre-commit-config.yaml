@@ -162,7 +162,7 @@ repos:
         args: [--baseline, ci/secrets.baseline]
 
   - repo: https://github.com/thoughtworks/talisman
-    rev: v1.3.0
+    rev: v1.11.0
     hooks:
       - id: talisman-commit
 
