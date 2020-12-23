@@ -133,7 +133,7 @@ repos:
       - id: pep257
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.6.1
+    rev: v2.7.4
     hooks:
       - id: pyupgrade
 
