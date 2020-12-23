@@ -3,4 +3,4 @@ pre-commit==2.7.1
 pypi-cli
 setuptools==50.3.0
 setuptools-autover==1.0.2
-wheel==0.35.1
+wheel==0.36.2
