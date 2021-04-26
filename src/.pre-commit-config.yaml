@@ -90,7 +90,7 @@ repos:
           - --no-documentation-check
 
   - repo: https://github.com/jorisroovers/gitlint
-    rev: v0.13.1
+    rev: v0.15.1
     hooks:
       - id: gitlint
         stages: [commit-msg]
