@@ -5,24 +5,6 @@
 fail_fast: false
 
 repos:
-  - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 2.1.4
-    hooks:
-      - id: check-mailmap
-      - id: fasterer
-      - id: forbid-binary
-      - id: git-check  # Configure in .gitattributes
-      - id: git-dirty  # Configure in .gitignore
-      - id: markdownlint
-      - id: protect-first-parent
-      - id: reek
-      - id: require-ascii
-      - id: rubocop
-      - id: script-must-have-extension
-      - id: script-must-not-have-extension
-      - id: shellcheck
-      - id: shfmt
-
   - repo: https://github.com/adrienverge/yamllint.git
     rev: v1.23.0
     hooks:
@@ -65,12 +47,12 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.4
+    rev: 3.9.2
     hooks:
       - id: flake8
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.1.9
+    rev: v1.1.10
     hooks:
       - id: forbid-crlf
       - id: forbid-tabs
@@ -78,31 +60,8 @@ repos:
           - makefile
           - go
 
-  - repo: https://github.com/chriskuehl/puppet-pre-commit-hooks.git
-    rev: v2.1.0
-    hooks:
-      - id: puppet-validate
-      - id: erb-validate
-      - id: epp-validate
-      - id: puppet-lint
-        args:
-          - --fail-on-warnings
-          - --no-documentation-check
-
-  - repo: https://github.com/jorisroovers/gitlint
-    rev: v0.13.1
-    hooks:
-      - id: gitlint
-        stages: [commit-msg]
-
-      - id: gitlint
-        entry: gitlint --commits upstream/master..
-        exclude: .*
-        always_run: true
-        stages: [manual]
-
   - repo: https://github.com/frnmst/md-toc
-    rev: 7.0.5
+    rev: 8.0.0
     hooks:
       - id: md-toc
         args: [-p, --skip-lines, '1', commonmarker]
@@ -118,7 +77,7 @@ repos:
       - id: mypy
 
   - repo: https://github.com/pre-commit/pygrep-hooks
-    rev: v1.7.0
+    rev: v1.9.0
     hooks:
       - id: python-check-blanket-noqa
       - id: python-check-mock-methods
@@ -133,30 +92,30 @@ repos:
       - id: pep257
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.7.4
+    rev: v2.19.4
     hooks:
       - id: pyupgrade
 
   # Like isort, but more static.
   - repo: https://github.com/asottile/reorder_python_imports
-    rev: v2.3.6
+    rev: v2.5.0
     hooks:
       - id: reorder-python-imports
 
   # WARN: This hook ignores some pep8 options for closing brace.
   # https://github.com/asottile/add-trailing-comma/blob/4737c82ee/add_trailing_comma.py#L348-L357
   - repo: https://github.com/asottile/add-trailing-comma
-    rev: v2.0.1
+    rev: v2.1.0
     hooks:
       - id: add-trailing-comma
 
   - repo: https://github.com/asottile/yesqa
-    rev: v1.2.2
+    rev: v1.2.3
     hooks:
       - id: yesqa
 
   - repo: https://github.com/Yelp/detect-secrets
-    rev: v0.13.1
+    rev: v1.1.0
     hooks:
       - id: detect-secrets
         args: [--baseline, ci/secrets.baseline]
@@ -172,7 +131,7 @@ repos:
       - id: bandit
 
   - repo: https://github.com/PyCQA/pydocstyle
-    rev: 5.1.1
+    rev: 6.1.1
     hooks:
       - id: pydocstyle
 
@@ -186,11 +145,11 @@ repos:
           - ruamel.yaml==0.16.10
 
   - repo: https://github.com/pre-commit/mirrors-autopep8
-    rev: v1.5.4
+    rev: v1.5.7
     hooks:
       - id: autopep8
 
   - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.4
+    rev: 3.9.2
     hooks:
       - id: flake8

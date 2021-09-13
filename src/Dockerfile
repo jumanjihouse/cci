@@ -1,4 +1,4 @@
-FROM alpine:3.12.3
+FROM alpine:3.13.6
 
 ENV GOSS_VERSION 0.3.11
 ENV BATS_VERSION 1.2.0
@@ -13,9 +13,13 @@ RUN apk add --no-cache \
       coreutils \
       curl \
       'docker>=19.03.13-r0' \
+      docker-compose \
+      docker-compose-bash-completion \
       file \
       gcc \
       git \
+      git-lfs \
+      git-svn \
       go \
       gzip \
       jq \
@@ -25,7 +29,11 @@ RUN apk add --no-cache \
       npm \
       openssh-client \
       openssl-dev \
+      py3-cryptography \
+      py3-pynacl \
       py3-pip \
+      py3-setuptools \
+      py3-wheel \
       python3 \
       python3-dev \
       ruby \
@@ -43,7 +51,8 @@ RUN apk add --no-cache \
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
 COPY requirements.txt /cci/
-RUN pip3 install -Iv --compile --no-cache-dir -r /cci/requirements.txt
+RUN pip3 install -Iv --compile --no-cache-dir -r /cci/requirements.txt && \
+    rm -fr /root/.cache
 
 RUN cd /tmp && \
     curl -sSL -o bats_v${BATS_VERSION}.tar.gz https://github.com/bats-core/bats-core/archive/v${BATS_VERSION}.tar.gz && \
