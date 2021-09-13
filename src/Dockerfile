@@ -18,6 +18,8 @@ RUN apk add --no-cache \
       file \
       gcc \
       git \
+      git-lfs \
+      git-svn \
       go \
       gzip \
       jq \
