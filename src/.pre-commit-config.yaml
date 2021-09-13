@@ -5,24 +5,6 @@
 fail_fast: false
 
 repos:
-  - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 2.1.5
-    hooks:
-      - id: check-mailmap
-      - id: fasterer
-      - id: forbid-binary
-      - id: git-check  # Configure in .gitattributes
-      - id: git-dirty  # Configure in .gitignore
-      - id: markdownlint
-      - id: protect-first-parent
-      - id: reek
-      - id: require-ascii
-      - id: rubocop
-      - id: script-must-have-extension
-      - id: script-must-not-have-extension
-      - id: shellcheck
-      - id: shfmt
-
   - repo: https://github.com/adrienverge/yamllint.git
     rev: v1.23.0
     hooks:
@@ -77,17 +59,6 @@ repos:
         exclude_types:  # Types come from "identify-cli".
           - makefile
           - go
-
-  - repo: https://github.com/chriskuehl/puppet-pre-commit-hooks.git
-    rev: v2.1.0
-    hooks:
-      - id: puppet-validate
-      - id: erb-validate
-      - id: epp-validate
-      - id: puppet-lint
-        args:
-          - --fail-on-warnings
-          - --no-documentation-check
 
   - repo: https://github.com/jorisroovers/gitlint
     rev: v0.15.1
