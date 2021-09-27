@@ -22,11 +22,13 @@ RUN apk add --no-cache \
       git-svn \
       go \
       gzip \
+      java-common \
       jq \
       libffi-dev \
       make \
       musl-dev \
       npm \
+      openjdk11-jre-headless \
       openssh-client \
       openssl-dev \
       py3-cryptography \
