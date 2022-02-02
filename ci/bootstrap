@@ -15,11 +15,15 @@ main() {
 }
 
 setup_pyenv() {
+  # This depends on https://github.com/pyenv/pyenv
+  # to fetch a version from https://www.python.org/ftp/python/
   if ! command -v pyenv &>/dev/null; then
     return
   fi
+  # Show available versions.
+  pyenv install --list
 
-  py3="3.6.3"
+  py3="3.10.0"
   if ! pyenv versions | grep "${py3}" &>/dev/null; then
     pyenv install "${py3}"
   fi
