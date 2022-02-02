@@ -1,5 +1,8 @@
 ---
 command:
+  actionlint --version:
+    exit-status: 0
+
   bats --version:
     exit-status: 0
     stdout:
