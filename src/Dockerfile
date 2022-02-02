@@ -56,7 +56,8 @@ COPY requirements.txt /cci/
 RUN pip3 install -Iv --compile --no-cache-dir -r /cci/requirements.txt && \
     rm -fr /root/.cache
 
-RUN cd /tmp && \
+WORKDIR /tmp
+RUN \
     curl -sSL -o bats_v${BATS_VERSION}.tar.gz https://github.com/bats-core/bats-core/archive/v${BATS_VERSION}.tar.gz && \
     tar -xf /tmp/bats_v${BATS_VERSION}.tar.gz && \
     bats-core-${BATS_VERSION}/install.sh /usr/local && \
@@ -67,7 +68,8 @@ RUN cd /tmp && \
 
 # Install latest statically-linked version of
 # https://github.com/koalaman/shellcheck
-RUN cd /tmp &&                                                                 \
+WORKDIR /tmp
+RUN                                                                            \
     version="latest" &&                                                        \
     tarball=shellcheck-latest.linux.x86_64.tar.xz &&                           \
     url=https://github.com/koalaman/shellcheck/releases/download/${version} && \
@@ -90,7 +92,8 @@ RUN curl -L -ssL -o /usr/local/bin/shfmt "https://github.com/mvdan/sh/releases/d
 ENV XDG_CACHE_HOME /root/.local/
 COPY .pre-commit-config.yaml /root/empty-repo/
 COPY bootstrap /usr/local/sbin/
-RUN cd /root/empty-repo &&                                                    \
+WORKDIR /root/empty-repo
+RUN                                                                           \
     git config --global user.email "you@example.com" &&                       \
     git config --global user.name "Your Name" &&                              \
     git init &&                                                               \
@@ -100,4 +103,5 @@ RUN cd /root/empty-repo &&                                                    \
 COPY python-path.sh /etc/profile.d/
 
 # Keep this near last to avoid busting the cache when adding tests.
+WORKDIR /
 COPY goss.yaml /

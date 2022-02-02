@@ -6,7 +6,7 @@ fail_fast: false
 
 repos:
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.23.0
+    rev: v1.26.3
     hooks:
       - id: yamllint
         args: [--format, parsable, --strict]
@@ -19,7 +19,7 @@ repos:
         exclude: src/goss.yaml  # This file uses go template
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.4.0
+    rev: v4.1.0
     hooks:
       - id: check-added-large-files
       - id: check-builtin-literals
@@ -52,7 +52,7 @@ repos:
       - id: flake8
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.1.10
+    rev: v1.1.11
     hooks:
       - id: forbid-crlf
       - id: forbid-tabs
@@ -61,18 +61,18 @@ repos:
           - go
 
   - repo: https://github.com/frnmst/md-toc
-    rev: 8.0.0
+    rev: 8.1.1
     hooks:
       - id: md-toc
         args: [-p, --skip-lines, '1', commonmarker]
 
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.0.0
+    rev: v2.1.0
     hooks:
       - id: codespell
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v0.780
+    rev: v0.931
     hooks:
       - id: mypy
 
@@ -92,25 +92,25 @@ repos:
       - id: pep257
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.19.4
+    rev: v2.31.0
     hooks:
       - id: pyupgrade
 
   # Like isort, but more static.
   - repo: https://github.com/asottile/reorder_python_imports
-    rev: v2.5.0
+    rev: v2.7.1
     hooks:
       - id: reorder-python-imports
 
   # WARN: This hook ignores some pep8 options for closing brace.
   # https://github.com/asottile/add-trailing-comma/blob/4737c82ee/add_trailing_comma.py#L348-L357
   - repo: https://github.com/asottile/add-trailing-comma
-    rev: v2.1.0
+    rev: v2.2.1
     hooks:
       - id: add-trailing-comma
 
   - repo: https://github.com/asottile/yesqa
-    rev: v1.2.3
+    rev: v1.3.0
     hooks:
       - id: yesqa
 
@@ -121,12 +121,12 @@ repos:
         args: [--baseline, ci/secrets.baseline]
 
   - repo: https://github.com/thoughtworks/talisman
-    rev: v1.11.0
+    rev: v1.23.0
     hooks:
       - id: talisman-commit
 
   - repo: https://github.com/PyCQA/bandit
-    rev: 1.7.0
+    rev: 1.7.2
     hooks:
       - id: bandit
 
@@ -136,7 +136,7 @@ repos:
       - id: pydocstyle
 
   - repo: https://github.com/PyCQA/pylint
-    rev: pylint-2.5.0
+    rev: v2.12.2
     hooks:
       - id: pylint
         additional_dependencies:
@@ -145,7 +145,7 @@ repos:
           - ruamel.yaml==0.16.10
 
   - repo: https://github.com/pre-commit/mirrors-autopep8
-    rev: v1.5.7
+    rev: v1.6.0
     hooks:
       - id: autopep8
 
@@ -153,3 +153,13 @@ repos:
     rev: 3.9.2
     hooks:
       - id: flake8
+
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.8.0
+    hooks:
+      - id: hadolint-docker
+
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.6.8
+    hooks:
+      - id: actionlint-docker

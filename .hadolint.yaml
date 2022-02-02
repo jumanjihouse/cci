@@ -1,0 +1,4 @@
+---
+
+ignored:
+  - DL3018  # This CI image is intended to use latest versions as of build
