@@ -106,6 +106,9 @@ RUN                                                                           \
 
 COPY python-path.sh /etc/profile.d/
 
+# https://github.com/hadolint/hadolint/tree/master/docker
+COPY hadolint /usr/bin/
+
 # Keep this near last to avoid busting the cache when adding tests.
 WORKDIR /
 COPY goss.yaml /

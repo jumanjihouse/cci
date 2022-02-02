@@ -16,6 +16,9 @@ command:
     stdout:
       - '{{.Env.GOSS_VERSION}}'
 
+  hadolint --version:
+    exit-status: 0
+
   printenv BUILD_DATE:
     exit-status: 0
     stdout:

@@ -1,3 +1,4 @@
 *.swp
 *~
 ci/vars
+src/hadolint
