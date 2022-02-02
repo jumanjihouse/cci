@@ -16,6 +16,16 @@ echo Remove mb container if it has been created.
 docker rm mb &>/dev/null || :
 
 echo
+echo Remove hadolint container if it has been created.
+docker rm hadolint &>/dev/null || :
+
+echo
+echo Get static binary for hadolint.
+docker pull hadolint/hadolint
+docker run --name hadolint -it --entrypoint /bin/hadolint hadolint/hadolint --version
+docker cp hadolint:/bin/hadolint src/
+
+echo
 echo Build cci image.
 docker-compose build
 
