@@ -12,7 +12,7 @@ repos:
         args: [--format, parsable, --strict]
 
   - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
-    rev: 0.1.0
+    rev: 0.1.1
     hooks:
       - id: yamlfmt
         args: [--mapping, '2', --sequence, '4', --offset, '2', --width, '150']
@@ -52,7 +52,7 @@ repos:
       - id: flake8
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.1.11
+    rev: v1.1.13
     hooks:
       - id: forbid-crlf
       - id: forbid-tabs
@@ -72,7 +72,7 @@ repos:
       - id: codespell
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v0.931
+    rev: v0.942
     hooks:
       - id: mypy
 
@@ -86,19 +86,19 @@ repos:
       - id: python-use-type-annotations
       - id: text-unicode-replacement-char
 
-  - repo: git://github.com/FalconSocial/pre-commit-mirrors-pep257
+  - repo: https://github.com/FalconSocial/pre-commit-mirrors-pep257
     rev: v0.3.3
     hooks:
       - id: pep257
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.31.0
+    rev: v2.31.1
     hooks:
       - id: pyupgrade
 
   # Like isort, but more static.
   - repo: https://github.com/asottile/reorder_python_imports
-    rev: v2.7.1
+    rev: v3.0.1
     hooks:
       - id: reorder-python-imports
 
@@ -115,18 +115,18 @@ repos:
       - id: yesqa
 
   - repo: https://github.com/Yelp/detect-secrets
-    rev: v1.1.0
+    rev: v1.2.0
     hooks:
       - id: detect-secrets
         args: [--baseline, ci/secrets.baseline]
 
   - repo: https://github.com/thoughtworks/talisman
-    rev: v1.23.0
+    rev: v1.26.0
     hooks:
       - id: talisman-commit
 
   - repo: https://github.com/PyCQA/bandit
-    rev: 1.7.2
+    rev: 1.7.4
     hooks:
       - id: bandit
 
@@ -136,7 +136,7 @@ repos:
       - id: pydocstyle
 
   - repo: https://github.com/PyCQA/pylint
-    rev: v2.12.2
+    rev: v2.13.3
     hooks:
       - id: pylint
         additional_dependencies:
@@ -155,11 +155,11 @@ repos:
       - id: flake8
 
   - repo: https://github.com/hadolint/hadolint
-    rev: v2.8.0
+    rev: v2.9.3
     hooks:
       - id: hadolint-docker
 
   - repo: https://github.com/rhysd/actionlint
-    rev: v1.6.8
+    rev: v1.6.10
     hooks:
       - id: actionlint-docker
