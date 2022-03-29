@@ -39,11 +39,6 @@ command:
     stdout:
       - '{{.Env.CI_BUILD_URL}}'
 
-  pypi info awscli:
-    exit-status: 0
-    stdout:
-      - /^Latest release/
-
   stat --printf=%s /dev/zero:
     exit-status: 0
     stdout:
