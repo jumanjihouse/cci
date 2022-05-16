@@ -57,7 +57,7 @@ command:
     stdout:
       - /^Python 3/
 
-  npm --version:
+  command -v npm:
     exit-status: 0
 
   command -v go:
