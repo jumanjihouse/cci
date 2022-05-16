@@ -3,6 +3,7 @@ FROM alpine:3.15.4
 ENV GOSS_VERSION 0.3.11
 ENV BATS_VERSION 1.2.0
 ENV SHFMT_VERSION v3.1.1
+ENV TERRAGRUNT_VERSION 0.36.11
 
 RUN apk add --no-cache \
       -X http://dl-cdn.alpinelinux.org/alpine/edge/main \
@@ -46,6 +47,7 @@ RUN apk add --no-cache \
       ruby-json \
       'runc==1.1.2-r0' \
       tar \
+      terraform \
       xz \
       yaml-dev \
       && \
@@ -88,6 +90,10 @@ RUN curl -L -ssL -o /usr/local/bin/shfmt "https://github.com/mvdan/sh/releases/d
 # Install https://github.com/rhysd/actionlint
 RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest &&            \
     ln -s /root/go/bin/actionlint /usr/bin/actionlint
+
+# Install terragrunt
+RUN curl -L -ssL -o /usr/local/bin/terragrunt "https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERSION}/terragrunt_linux_amd64" && \
+    chmod 0755 /usr/local/bin/terragrunt
 
 # Cache a bunch of pre-commit hook environments
 # to reduce runtimes on circleci

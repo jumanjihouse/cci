@@ -63,6 +63,12 @@ command:
   command -v go:
     exit-status: 0
 
+  terraform --version:
+    exit-status: 0
+
+  terragrunt --version:
+    exit-status: 0
+
 package:
   docker:
     installed: true
