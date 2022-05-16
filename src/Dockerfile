@@ -1,4 +1,4 @@
-FROM alpine:3.15.3
+FROM alpine:3.15.4
 
 ENV GOSS_VERSION 0.3.11
 ENV BATS_VERSION 1.2.0
@@ -45,6 +45,7 @@ RUN apk add --no-cache \
       ruby-etc \
       ruby-irb \
       ruby-json \
+      'runc==1.1.2-r0' \
       tar \
       terraform \
       xz \
