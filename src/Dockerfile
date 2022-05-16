@@ -44,6 +44,7 @@ RUN apk add --no-cache \
       ruby-etc \
       ruby-irb \
       ruby-json \
+      'runc==1.1.2-r0' \
       tar \
       xz \
       yaml-dev \
