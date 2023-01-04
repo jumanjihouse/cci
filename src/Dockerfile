@@ -3,7 +3,7 @@ FROM alpine:3.16.0
 ENV GOSS_VERSION 0.3.11
 ENV BATS_VERSION 1.2.0
 ENV SHFMT_VERSION v3.1.1
-ENV TERRAGRUNT_VERSION 0.36.11
+ENV TERRAGRUNT_VERSION 0.42.5
 
 RUN apk add --no-cache \
       -X http://dl-cdn.alpinelinux.org/alpine/edge/main \
